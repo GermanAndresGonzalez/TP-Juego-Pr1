@@ -170,7 +170,8 @@ void mostrarCreditos()
     rlutil::locate(40, 15);
     cout << "------------------------------" << endl;
     rlutil::locate(40, 16);
-    cout << "Seleccione una opción: ";
+    cout << "Presiona una tecla para volver al menú.";
+
     rlutil::anykey();
     rlutil::cls();
 
