@@ -4,12 +4,13 @@
 #include <string>
 using namespace std;
 
-bool salir ();
+bool salir();
 void cambiarColores(int codigo);
 void mostrarMenu();
 void jugar();
 int lanzarDado(int caras);
-void turnoJugador(string nombre, int& puntaje, int dadosStock[]);
+void turnoJugador(string nombre, int &puntaje, int dadosStock[]);
 bool verificarVictoria(int dadosStock[]);
+void mostrarCreditos();
 
 #endif // CODIGOENFRENDADOS_H_INCLUDED

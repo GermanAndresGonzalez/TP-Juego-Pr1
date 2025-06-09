@@ -4,20 +4,15 @@
 
 using namespace std;
 
-int main() {
-    bool respuestaSalir=true;
+int main()
+{
+    bool respuestaSalir = true;
     srand(time(0)); // Inicializar la aleatoriedad
-    while (respuestaSalir == true){
+    while (respuestaSalir == true)
+    {
         mostrarMenu();
-        respuestaSalir=salir();
+        respuestaSalir = salir();
     }
-
-
-
 
     return 0;
 }
-
-
-
-

@@ -28,14 +28,14 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1749482950 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.cpp
+1749494878 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.cpp
 	<iostream>
 	<chrono>
 	<thread>
 	"codigoEnfrendados.h"
 	"rlutil.h"
 
-1749482950 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.h
+1749493142 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.h
 	<string>
 
 1749482950 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\rlutil.h
@@ -52,7 +52,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1749482950 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\main.cpp
+1749494886 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\main.cpp
 	<iostream>
 	"codigoEnfrendados.h"
 	<time.h>

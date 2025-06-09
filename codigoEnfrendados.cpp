@@ -7,9 +7,10 @@
 const int DADOS_INICIALES = 6;
 const int RONDAS = 3;
 
-
-void cambiarColores(int codigo){
-    switch (codigo){
+void cambiarColores(int codigo)
+{
+    switch (codigo)
+    {
     case 1:
         rlutil::setBackgroundColor(rlutil::GREY);
         rlutil::setColor(rlutil::LIGHTMAGENTA);
@@ -19,47 +20,50 @@ void cambiarColores(int codigo){
         rlutil::setColor(rlutil::RED);
         break;
     }
-
 }
 
-bool salir (){ // Pregunta si realmente desea salir
+bool salir()
+{ // Pregunta si realmente desea salir
     char deseaSalir;
-    rlutil::locate(40,17);
+    rlutil::locate(40, 17);
     cout << "¿Realmente desea salir? S/N ";
     cin >> deseaSalir;
-    deseaSalir= toupper(deseaSalir);
-    if (deseaSalir == 'S' ){
+    deseaSalir = toupper(deseaSalir);
+    if (deseaSalir == 'S')
+    {
         return false;
     }
 }
 
-void mostrarMenu() { // Menú del juego con cambio de colores y posción
+void mostrarMenu()
+{ // Menú del juego con cambio de colores y posción
 
-    int opcion=10;
+    int opcion = 10;
 
-    do {
+    do
+    {
         cambiarColores(1);
         rlutil::cls();
-        rlutil::locate(40,10);
+        rlutil::locate(40, 10);
         cout << "1 - JUGAR" << endl;
-        rlutil::locate(40,11);
+        rlutil::locate(40, 11);
         cout << "2 - ESTADÍSTICAS" << endl;
-        rlutil::locate(40,12);
+        rlutil::locate(40, 12);
         cout << "3 - CRÉDITOS" << endl;
-        rlutil::locate(40,13);
+        rlutil::locate(40, 13);
         cout << "0 - SALIR" << endl;
-        rlutil::locate(40,14);
+        rlutil::locate(40, 14);
         cout << "------------------------------" << endl;
-        rlutil::locate(40,15);
+        rlutil::locate(40, 15);
         cout << "Seleccione una opción: ";
         cin >> opcion;
 
-        if (cin.fail()){
+        if (cin.fail())
+        {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            opcion=10;
+            opcion = 10;
             continue;
-
         }
 
         switch (opcion)
@@ -71,13 +75,10 @@ void mostrarMenu() { // Menú del juego con cambio de colores y posción
             cout << "Mostrar estadísticas\n";
             break;
         case 3:
-            cout << "Mostrar créditos\n";
-            break;
+            mostrarCreditos();
+            continue;
         }
     } while (opcion != 0);
-
-
-
 }
 
 void jugar()
@@ -87,10 +88,10 @@ void jugar()
     int dadosStock1[DADOS_INICIALES] = {6, 3, 5, 2, 4, 1}; // Valores iniciales
     int dadosStock2[DADOS_INICIALES] = {1, 2, 3, 4, 5, 6};
     rlutil::cls();
-    rlutil::locate(40,10);
+    rlutil::locate(40, 10);
     cout << "Ingrese nombre del Jugador 1: ";
     cin >> jugador1;
-    rlutil::locate(40,11);
+    rlutil::locate(40, 11);
     cout << "Ingrese nombre del Jugador 2: ";
     cin >> jugador2;
 
@@ -112,15 +113,17 @@ void jugar()
     // Resultado final
 
     cambiarColores(2);
-    //rlutil::cls();
+    // rlutil::cls();
     cout << endl;
     cout << "Puntaje final: " << jugador1 << " = " << puntaje1 << ", " << jugador2 << " = " << puntaje2 << "\n";
-    cout << endl << "Presiona una tecla para volver al menú." << endl;
+    cout << endl
+         << "Presiona una tecla para volver al menú." << endl;
     rlutil::anykey();
     cambiarColores(1);
 }
 
-int lanzarDado(int caras){
+int lanzarDado(int caras)
+{
 
     return rand() % caras + 1;
 }
@@ -149,4 +152,27 @@ bool verificarVictoria(int dadosStock[])
     for (int i = 0; i < DADOS_INICIALES; i++)
         cantidadDados += dadosStock[i] != 0 ? 1 : 0;
     return cantidadDados == 0;
+}
+
+void mostrarCreditos()
+{
+    rlutil::cls();
+    rlutil::locate(40, 10);
+    cout << "------------------------------" << endl;
+    rlutil::locate(40, 11);
+    cout << "Braian Gigena" << endl;
+    rlutil::locate(40, 12);
+    cout << "Francisco Emmanuel Montilla" << endl;
+    rlutil::locate(40, 13);
+    cout << "German Andres Gonzalez" << endl;
+    rlutil::locate(40, 14);
+    cout << "Mayra Elisabet Schuchman" << endl;
+    rlutil::locate(40, 15);
+    cout << "------------------------------" << endl;
+    rlutil::locate(40, 16);
+    cout << "Seleccione una opción: ";
+    rlutil::anykey();
+    rlutil::cls();
+
+    // return 0;
 }
