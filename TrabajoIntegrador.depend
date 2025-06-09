@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1749480724 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\trabajointegrador\codigoenfrendados.cpp
+	<iostream>
+	<chrono>
+	<thread>
+	"codigoEnfrendados.h"
+	"rlutil.h"
+
+1749479912 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\trabajointegrador\codigoenfrendados.h
+	<string>
+
+1749480111 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\trabajointegrador\main.cpp
+	<iostream>
+	"codigoEnfrendados.h"
+	<time.h>
+
+1571584339 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\trabajointegrador\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
