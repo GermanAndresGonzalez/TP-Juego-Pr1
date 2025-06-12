@@ -4,15 +4,22 @@
 #include <string>
 using namespace std;
 
+void borrarPantalla(); // Borra la pantalla de la consola. Parece más amigable.
+
 
 void cambiarFondo( int colorFondo); // // Cambia el color del fondo de manera más amiigable;
 void cambiarLetra( int colorLetra);// // Cambia el color de la letras fondo de manera más amiigable;
 
-void encabezado(int x, int y); // Imprime el encabezado del juego
+void encabezado(int x, int y, int largo); // Imprime el encabezado del juego
+void dibujarMarco(int x, int y, int largo,int ancho);   //Dibuja el marco del menú
 void mostrarMenu();  // Muestra el menu
 void imprimirLineas(int largo,char caracter); // Imprimir caracteres de manera repetida
 
 void jugar();
+
+void sortearJugadores(string &jugador1,string &jugador2);
+void dibujarDado(int cantCaras, int valorDado, int x, int y);
+
 
 bool salir(); // Sale del juego/menu
 int lanzarDado(int caras);
