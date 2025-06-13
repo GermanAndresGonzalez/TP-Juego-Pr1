@@ -9,13 +9,14 @@ using namespace std;
 
 int main()
 {
-    bool respuestaSalir = true;
+
+    bool respuestaSalir = false;
     srand(time(0)); // Inicializar la aleatoriedad
 
     //dibujarMarco(10, 6, 20,60);
 
 
-    while (respuestaSalir == true)
+    while (respuestaSalir != true)
     {
         mostrarMenu();
         respuestaSalir = salir();

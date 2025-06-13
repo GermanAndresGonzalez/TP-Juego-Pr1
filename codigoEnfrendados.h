@@ -5,7 +5,7 @@
 using namespace std;
 
 void borrarPantalla(); // Borra la pantalla de la consola. Parece más amigable.
-
+void esperar(int tiempo);
 
 void cambiarFondo( int colorFondo); // // Cambia el color del fondo de manera más amiigable;
 void cambiarLetra( int colorLetra);// // Cambia el color de la letras fondo de manera más amiigable;
@@ -16,6 +16,7 @@ void mostrarMenu();  // Muestra el menu
 void imprimirLineas(int largo,char caracter); // Imprimir caracteres de manera repetida
 
 void jugar();
+void ronda(string &jugador1, string &jugador2);
 
 void sortearJugadores(string &jugador1,string &jugador2);
 void dibujarDado(int cantCaras, int valorDado, int x, int y);

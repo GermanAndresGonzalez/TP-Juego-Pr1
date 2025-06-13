@@ -35,6 +35,7 @@
 		<Unit filename="codigoEnfrendados.cpp" />
 		<Unit filename="codigoEnfrendados.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="parteGrafica.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
