@@ -25,6 +25,7 @@ void turnoJugador(string nombre, int &puntaje, int dadosStock[], int DADOS_INICI
 void imprimirLineas(int largo,char caracter);
 void encabezado(int x, int y, int ancho);
 void dibujarDado(int cantCaras, int valorDado, int x, int y);
+void mostrarVector(int vec[],int largo);
 
 void jugarRonda(string &jugador1, string &jugador2, int &ronda);
 
@@ -353,6 +354,9 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
     int valorDado=0;
     int ancho =120;
     int vectorDados[11]={0,0,0,0,0,0,0,0,0,0,0};
+    int vectorStock[11]={0,0,0,0,0,0,0,0,0,0,0}; // 1 presente 0 ausente
+    int vectorUsados[11]={0,0,0,0,0,0,0,0,0,0,0}; // 1 presente 0 ausente
+
     int dadoObj;
     int cantidadDados=11;
     int valorDado12A=0,valorDado12B=0;
@@ -365,13 +369,13 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
     y+=4;
     if (ronda==1){
         x+=5;
-        rlutil::locate(x,y);
+        rlutil::locate(x+10,y);
         cout << "Estos son los dados Objetivo del jugador/a " << jugador1 << ":";
         valorDado12A=lanzarDado(12);
         y+=2;
-        dibujarDado(12,valorDado12A,x+10,y);
+        dibujarDado(12,valorDado12A,x+30,y);
         valorDado12B=lanzarDado(12);
-        dibujarDado(12,valorDado12B,x+20,y);
+        dibujarDado(12,valorDado12B,x+40,y);
         y+=6;
         rlutil::locate(x,y);
         cout << "La suma de los dados es: " << valorDado12A+valorDado12B;
@@ -384,6 +388,8 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
             cout << "Dado " << i+1;
             valorDado=lanzarDado(6);
             vectorDados[i]=valorDado;
+            vectorStock[i]=1;
+            vectorUsados[i]=1;
             dibujarDado(6,valorDado,x,y+2);
             x+=10;
 
@@ -401,21 +407,42 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
             cin >> dadoObj;
 
             if (dadoObj != 0) {
-                rlutil::locate(x+41, y+5);
-                mensaje += " " + to_string(dadoObj);
-                cout << mensaje;
-                contador+=dadoObj;
-                sumaSeleccionada+=vectorDados[dadoObj-1];
-                rlutil::locate(x+41, y+6);
-                cout << "Suma de los dados: " << sumaSeleccionada;
+
+                if (vectorUsados[dadoObj-1]==1){
+
+                    rlutil::locate(x+41, y+5);
+                    mensaje += " " + to_string(dadoObj);
+                    cout << mensaje;
+                    contador+=dadoObj;
+                    sumaSeleccionada+=vectorDados[dadoObj-1];
+                    rlutil::locate(x+41, y+6);
+                    cout << "Suma de los dados: " << sumaSeleccionada << "          ";
+                    vectorUsados[dadoObj-1]=0;
+
+                }else{
+                    rlutil::locate(x+41, y+6);
+                    cout << "Dado ya usado o no presente";
+                }
+
+
+
             }
         } while (dadoObj != 0);
 
 
 
-
+        mostrarVector(vectorUsados,11);
         }
     rlutil::anykey();
+
+}
+
+void mostrarVector(int vec[],int largo){
+    for (int i=0; i<largo;i++){
+        cout << vec[i] << " ";
+    }
+
+
 
 }
 
