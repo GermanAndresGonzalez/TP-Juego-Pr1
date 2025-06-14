@@ -157,3 +157,10 @@ void ronda(string &jugador1, string &jugador2){
 
 }
 
+void mostrarDadoFalso (int cantCaras, int x, int y){
+	int rangoTiempo=140;
+	for (int i=0;i<15;i++){
+		rlutil::msleep(rand() % rangoTiempo+50);
+		dibujarDado(cantCaras, lanzarDado(cantCaras), x, y);
+	}
+}

@@ -20,7 +20,7 @@ void ronda(string &jugador1, string &jugador2);
 
 void sortearJugadores(string &jugador1,string &jugador2);
 void dibujarDado(int cantCaras, int valorDado, int x, int y);
-
+void mostrarDadoFalso (int cantCaras, int x, int y);
 
 bool salir(); // Sale del juego/menu
 int lanzarDado(int caras);

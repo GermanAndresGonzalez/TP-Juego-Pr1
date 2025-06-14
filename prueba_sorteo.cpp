@@ -13,21 +13,30 @@
 
 #include "rlutil.h"
 using namespace std;
+//Funciones visuales:
+void borrarPantalla();  // Borra/limpia la parte gráfica de la pantalla. CLS
+void cambiarFondo( int colorFondo); // Cambia los colores del fondo
+void cambiarLetra( int colorLetra); // Cambia los colores de la letra
+void dibujarMarco(int x, int y, int largo,int ancho); // Dibuja un marco para el área del juego. Cambia de tamaño
+void imprimirLineas(int largo,char caracter); // Imprime líneas de un largo x con un mismo caracter
+void encabezado(int x, int y, int ancho);  // Dibuja el encabezado del juego
+void dibujarDado(int cantCaras, int valorDado, int x, int y); // Dibuja un dado de 6 o 12 caras
+void mostrarDadoFalso(int cantCaras, int x, int y); // Se usa para dar la ilusion de sorteo
+int calcularCentroTexto(int x, string cadena, int ancho); // Centra el texto
 
-void borrarPantalla();
-void cambiarFondo( int colorFondo);
-void cambiarLetra( int colorLetra);
-void dibujarMarco(int x, int y, int largo,int ancho);
-void sortearJugadores(string &jugador1,string &jugador2);
-void jugar(CONST int DADOS_INICIALES);
-int lanzarDado(int caras);
+// Funciones relacionadas con la lógica del juego
+void sortearJugadores(string &jugador1,string &jugador2); // Primer sorteo. Sale el primer jugador en jugar.
+void jugar(CONST int DADOS_INICIALES); // Función controladora
+int lanzarDado(int caras);  // Genera el valor del dado de 6/12 caras.
 void turnoJugador(string nombre, int &puntaje, int dadosStock[], int DADOS_INICIALES);
-void imprimirLineas(int largo,char caracter);
-void encabezado(int x, int y, int ancho);
-void dibujarDado(int cantCaras, int valorDado, int x, int y);
+void jugarRonda(string &jugador1, string &jugador2, int &ronda); // Ronda de 1 jugador.
+
+
+//Funciones temp para prueba
 void mostrarVector(int vec[],int largo);
 
-void jugarRonda(string &jugador1, string &jugador2, int &ronda);
+
+
 
 
 
@@ -120,6 +129,7 @@ void sortearJugadores(string &jugador1,string &jugador2){
     int segundoDado=0;
     int xDado=46;
     int yDado=15;
+    string mensaje="";
 
 
     rlutil::locate(40, 8);
@@ -144,17 +154,28 @@ void sortearJugadores(string &jugador1,string &jugador2){
     cout << "Ahora se sorteará quien juega primero:";
     yDado++;
 
-    rlutil::locate(xDado+4,yDado-2);
-    cout << jugador1;
 
-    dibujarDado(12, primerDado, xDado+3,yDado);
+
+
+    //rlutil::locate(xDado+4,yDado-2);
+    xDado=calcularCentroTexto(xDado+10, jugador1, 50);
+    rlutil::locate(xDado,yDado-2);
+
+    cout << jugador1;
+    mostrarDadoFalso(12,xDado,yDado);
+    dibujarDado(12, primerDado, xDado,yDado);
 
     xDado+=13;
 
-    rlutil::locate(xDado+2,yDado-2);
+
+
+    //rlutil::locate(xDado+2,yDado-2);
+    xDado=(calcularCentroTexto(xDado, jugador2, 25)+25);
+    rlutil::locate(xDado,yDado-2);
     cout << jugador2;
 
-    dibujarDado(12, segundoDado,xDado+2, yDado);
+    mostrarDadoFalso(12,xDado, yDado);
+    dibujarDado(12, segundoDado,xDado, yDado);
     if (primerDado < segundoDado){
         swap (jugador1,jugador2);
 
@@ -162,17 +183,22 @@ void sortearJugadores(string &jugador1,string &jugador2){
 
     yDado+=6;
     rlutil::hidecursor();
+    mensaje= jugador1 + " tira primero los dados.";
     rlutil::locate(40,yDado);
-    cout << jugador1 << " le toca tirar primero los dados.";
+
+    cout << mensaje;
     rlutil::locate(40,yDado+2);
     cout << "¡Toca una tecla para comenzar a jugar!";
     rlutil::locate(55,yDado+3);
     cout << "¡Suerte!";
 
 
-
-
 }
+
+
+
+
+
 
 
 void jugar(CONST int DADOS_INICIALES)
@@ -356,11 +382,13 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
     int vectorDados[11]={0,0,0,0,0,0,0,0,0,0,0};
     int vectorStock[11]={0,0,0,0,0,0,0,0,0,0,0}; // 1 presente 0 ausente
     int vectorUsados[11]={0,0,0,0,0,0,0,0,0,0,0}; // 1 presente 0 ausente
-
+    int puntos=0;
     int dadoObj;
     int cantidadDados=11;
     int valorDado12A=0,valorDado12B=0;
+    int sumaDados12;
     int sumaSeleccionada=0;
+    int contadorDados=0;
     string mensaje="";
 
     dibujarMarco(x,y,30,ancho);
@@ -369,19 +397,22 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
     y+=4;
     if (ronda==1){
         x+=5;
-        rlutil::locate(x+10,y);
-        cout << "Estos son los dados Objetivo del jugador/a " << jugador1 << ":";
+        rlutil::locate(x+20,y);
+        cout << "Estos son los dados Objetivo de " << jugador1 << ":";
         valorDado12A=lanzarDado(12);
         y+=2;
+        mostrarDadoFalso(12,x+30,y);
         dibujarDado(12,valorDado12A,x+30,y);
         valorDado12B=lanzarDado(12);
+        mostrarDadoFalso(12,x+40,y);
         dibujarDado(12,valorDado12B,x+40,y);
         y+=6;
         rlutil::locate(x,y);
-        cout << "La suma de los dados es: " << valorDado12A+valorDado12B;
+        sumaDados12=valorDado12A+valorDado12B;
+        cout << "La suma de los dados es: " << sumaDados12;
         y++;
         rlutil::locate(x,y);
-        cout << "Estos son los dados del jugador/a " << jugador1 << ":";
+        cout << "Estos son los dados de " << jugador1 << ":";
         y+=2;
         for (int i=0; i< cantidadDados;i++){
             rlutil::locate(x+1,y);
@@ -390,6 +421,7 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
             vectorDados[i]=valorDado;
             vectorStock[i]=1;
             vectorUsados[i]=1;
+            mostrarDadoFalso(6,x,y+2);
             dibujarDado(6,valorDado,x,y+2);
             x+=10;
 
@@ -418,6 +450,7 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
                     rlutil::locate(x+41, y+6);
                     cout << "Suma de los dados: " << sumaSeleccionada << "          ";
                     vectorUsados[dadoObj-1]=0;
+                    contadorDados++;
 
                 }else{
                     rlutil::locate(x+41, y+6);
@@ -428,6 +461,16 @@ void jugarRonda(string &jugador1, string &jugador2, int &ronda){
 
             }
         } while (dadoObj != 0);
+        if (sumaSeleccionada==(valorDado12A+valorDado12B) ){
+            puntos = sumaDados12* contadorDados;
+            rlutil::locate(x+41, y+7);
+            cout << "Tirada exitosa, se suman: " << puntos << " puntos a " << jugador1 << endl;
+            rlutil::locate(x+41, y+8);
+            cout << "Le pasa " << contadorDados << " a " << jugador2 << endl;
+        } else {
+            rlutil::locate(x+41, y+7);
+            cout << "Tirada fallida no se suman puntos";
+        }
 
 
 
@@ -441,8 +484,21 @@ void mostrarVector(int vec[],int largo){
     for (int i=0; i<largo;i++){
         cout << vec[i] << " ";
     }
-
-
-
 }
+
+void mostrarDadoFalso (int cantCaras, int x, int y){
+	int rangoTiempo=140;
+	for (int i=0;i<15;i++){
+		rlutil::msleep(rand() % rangoTiempo+50);
+		dibujarDado(cantCaras, lanzarDado(cantCaras), x, y);
+	}
+}
+
+int calcularCentroTexto(int x, string cadena, int ancho){
+    int largo= cadena.length();
+    int num=((x+ancho)-largo)/2;
+    return num;
+}
+
+
 
