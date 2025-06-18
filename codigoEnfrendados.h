@@ -30,6 +30,7 @@ void turnoJugador(string nombre, int dadosStock[]);
 bool verificarVictoria(int dadosStock[]);
 void imprimirRonda(int x, int y, string nombre, int ronda);
 void mostrarEstadisticas(string nombre1, string nombre2, int vec[], int vec2[]);
+int imprimirLineaEstadistica (int x, int y, string nombre, int vec[]);
 
 // Vectores:
 
