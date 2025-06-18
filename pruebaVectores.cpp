@@ -5,7 +5,7 @@ using namespace std;
 
 int contarDadosVector(int vec[], int largo);
 void sumarDadosVector(int vec[], int largo);
-void restarVector(int vec[], int largo);
+void restarVector(int vec[], int cantidad);
 void inicializarVector(int vec[], int inicial);
 void mostrarVector(int vec[], int largo);
 
@@ -20,13 +20,15 @@ int main()
     // Inicializar el vector
     inicializarVector(vec, inicial);
     mostrarVector(vec, largo);
+    restarVector(vec, 3);
+    mostrarVector(vec, largo);
     return 0;
 }
 
 void mostrarVector(int vec[], int largo)
 {
     cout << endl;
-    for (int i = 0; i < largo; i++)
+    for (int i = 0; i < largo - 1; i++)
     {
         cout << "Elemento " << i << ": " << vec[i] << endl;
     }
@@ -40,8 +42,16 @@ void inicializarVector(int vec[], int inicial)
     }
 }
 
-void restarVector(int vec[], int largo)
+void restarVector(int vec[], int cantidad)
 {
+    for (int i = 11; i > 0; i--)
+    {
+        if ((vec[i] != 0) && (cantidad > 0))
+        {
+            vec[i] = 0;
+            cantidad--;
+        }
+    }
 }
 
 void sumarDadosVector(int vec[], int largo)

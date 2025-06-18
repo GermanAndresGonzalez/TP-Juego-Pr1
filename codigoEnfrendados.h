@@ -16,10 +16,9 @@ int calcularCentroTexto(int x, string cadena, int ancho);
 void mostrarCreditos();
 
 // Codigo enfrendados
-void jugar(bool inicial);
+void jugar(string &jugador1, string &jugador2,  int vec[], int vec2[]);
 void ronda(string &jugador1, string &jugador2);
-void jugarRonda(string &jugador1, string &jugador2, int &ronda);
-
+void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]);
 
 void sortearJugadores(string &jugador1,string &jugador2);
 void dibujarDado(int cantCaras, int valorDado, int x, int y);
@@ -27,16 +26,18 @@ void mostrarDadoFalso (int cantCaras, int x, int y);
 
 bool salir(); // Sale del juego/menu
 int lanzarDado(int caras);
-void turnoJugador(string nombre, int &puntaje, int dadosStock[]);
+void turnoJugador(string nombre, int dadosStock[]);
 bool verificarVictoria(int dadosStock[]);
+void imprimirRonda(int x, int y, string nombre, int ronda);
+void mostrarEstadisticas(string nombre1, string nombre2, int vec[], int vec2[]);
 
 // Vectores:
 
-void mostrarVector(int vec[],int largo);
-void inicializarVector(int vec[], int largo);
-void restarDadosVector(int vec[], int largo);
-void sumarDadosVector(int vec[], int largo);
-int contarDadosVector(int vec[], int largo); // Cuenta los dados que tiene el jugador en el vector
+void mostrarVector(int vec[],int cantidad);
+void inicializarVector(int vec[], int inicial);
+void restarVector(int vec[], int cantidad);
+void sumarDadosVector(int vec[], int cantidad);
+int contarDadosVector(int vec[], int cantidad); // Cuenta los dados que tiene el jugador en el vector
 
 
 

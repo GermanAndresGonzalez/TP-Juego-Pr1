@@ -42,13 +42,21 @@ void mostrarMenu()
 { // Menú del juego con cambio de colores y posición
     int x=40;
     int y=5;
+
     int largo=13;
     int ancho=49;
 
     int opcion = 10;
-    bool inicial=true;
+
+    //bool inicial=true;
 
 
+    int numInicial=6;
+    string jugador1="", jugador2="";
+    int dadosStock1[12] ={0};
+    int dadosStock2[12] ={0};
+    inicializarVector(dadosStock1,numInicial);
+    inicializarVector(dadosStock2,numInicial);
 
     do
     {
@@ -59,27 +67,27 @@ void mostrarMenu()
         dibujarMarco(x,y,largo,ancho);
         encabezado(x,y, ancho);
 
-        rlutil::locate(59, 10);
+        rlutil::locate(x+19, 10);
         cout << "1 - JUGAR";
 
-        rlutil::locate(59, 11);
+        rlutil::locate(x+19, 11);
         cout << "2 - ESTADÍSTICAS";
 
-        rlutil::locate(59, 12);
+        rlutil::locate(x+19, 12);
         cout << "3 - CRÉDITOS";
 
-        rlutil::locate(59, 13);
+        rlutil::locate(x+19, 13);
         cout << "0 - SALIR";
 
-        rlutil::locate(40, 16);
+        rlutil::locate(x, 16);
 
-        imprimirLineas(49, '-');
+        imprimirLineas(x+9, '-');
 
-        rlutil::locate(54, 17);
+        rlutil::locate(x+14, 17);
         cout << "Seleccione una opción:";
-        rlutil::locate(40, 18);
+        rlutil::locate(x, 18);
 
-        rlutil::locate(77, 17);
+        rlutil::locate(x+37, 17);
         cin >> opcion;
 
         if (cin.fail())  // En caso de que se ingrese una caracter en vez de un número y no de error
@@ -93,10 +101,10 @@ void mostrarMenu()
         switch (opcion)
         {
         case 1:
-            jugar(inicial);
+            jugar(jugador1,jugador2,dadosStock1,dadosStock2);
             break;
         case 2:
-            cout << "Mostrar estadísticas";
+            mostrarEstadisticas(jugador1, jugador2, dadosStock1, dadosStock2);
             break;
         case 3:
             mostrarCreditos();
@@ -115,11 +123,12 @@ void imprimirLineas(int largo,char caracter){
 }
 
 void encabezado(int x, int y, int largo){
+    int medio=(largo-11)/2;
 
     rlutil::locate(x, y);
     imprimirLineas(largo, '-');
 
-    rlutil::locate(x+19, y+1);
+    rlutil::locate(x+medio, y+1);
     cout << "Enfrendados" << endl;
     rlutil::locate(x, y+2);
     imprimirLineas(largo, '-');
