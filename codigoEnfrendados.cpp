@@ -116,8 +116,7 @@ void jugar(string &jugador1, string &jugador2,  int vec[], int vec2[])
     int puntaje1 = 0, puntaje2 = 0;
     int ronda=1;
 
-    //vec[12]={0};
-    //vec2[12]={0};
+
     inicializarVector(vec,numInicial);
     inicializarVector(vec2,numInicial);
 
@@ -133,15 +132,20 @@ void jugar(string &jugador1, string &jugador2,  int vec[], int vec2[])
     rlutil::anykey();
 
 
+    do {
+        borrarPantalla();
+        imprimirRonda(25, 3, jugador1, ronda);
+        jugarRonda(jugador1, jugador2, vec,vec2);
 
-    borrarPantalla();
-    imprimirRonda(25, 3, jugador1, ronda);
-    jugarRonda(jugador1, jugador2, vec,vec2);
+
+        borrarPantalla();
+        imprimirRonda(25, 3, jugador2, ronda);
+        jugarRonda(jugador2, jugador1, vec2,vec);
+        ronda++;
 
 
-    borrarPantalla();
-    imprimirRonda(25, 3, jugador2, ronda);
-    jugarRonda(jugador2, jugador1, vec2,vec);
+    } while (ronda<4);
+
 
 }
 
@@ -352,7 +356,7 @@ void mostrarEstadisticas(string nombre1, string nombre2, int vec[], int vec2[]){
     dibujarMarco(x,y,largo,ancho);
     x+=5;
     y+=5;
-    if ((nombre1==" ")|| (nombre2==" ")){
+    if ((nombre1!="") && (nombre2!="")){
 
         rlutil::locate(x+25,y);
         cout << "Estadísticas";
