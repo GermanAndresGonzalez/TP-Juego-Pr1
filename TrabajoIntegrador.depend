@@ -28,7 +28,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1749825865 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.cpp
+1750215009 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.cpp
 	<iostream>
 	<chrono>
 	<thread>
@@ -36,7 +36,7 @@
 	"codigoEnfrendados.h"
 	"rlutil.h"
 
-1749823487 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.h
+1750215410 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\codigoenfrendados.h
 	<string>
 
 1749482950 e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\rlutil.h
@@ -53,8 +53,11 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1749824140 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\main.cpp
+1750214834 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\main.cpp
 	<iostream>
+	<chrono>
+	<thread>
+	<windows.h>
 	<clocale>
 	"codigoEnfrendados.h"
 	<time.h>
@@ -63,10 +66,14 @@
 	<string>
 	"rlutil.h"
 
-1749825736 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\partegrafica.cpp
+1750258925 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\partegrafica.cpp
 	<iostream>
 	<chrono>
 	<thread>
 	"codigoEnfrendados.h"
 	"rlutil.h"
+
+1750258014 source:e:\estudio\utn\01-tecnicatura\cursada\primer año\primer cuatrimestre\programación i\tp integrador\código\juego tp program1\tp-juego-pr1\trabajovectores.cpp
+	<iostream>
+	"codigoEnfrendados.h"
 

@@ -12,38 +12,13 @@ void borrarPantalla() {
 
 void cambiarFondo( int colorFondo)
 {
-    switch (colorFondo)
-    {
-    case 1:
-        rlutil::setBackgroundColor(rlutil::GREY);
-        break;
-    case 2:
-        rlutil::setBackgroundColor(rlutil::WHITE);
-        break;
-    case 3:
-        rlutil::setBackgroundColor(rlutil::BLACK);
-        break;
-    }
+    rlutil::setBackgroundColor(colorFondo);
+
 }
 
 void cambiarLetra( int colorLetra)
 {
-
-    switch (colorLetra)
-    {
-    case 1:
-        rlutil::setColor(rlutil::LIGHTMAGENTA);
-        break;
-    case 2:
-        rlutil::setColor(rlutil::RED);
-        break;
-    case 3:
-        rlutil::setColor(rlutil::BLACK);
-        break;
-    case 4:
-        rlutil::setColor(rlutil::BLUE);
-        break;
-    }
+    rlutil::setColor(colorLetra);
 
 }
 
@@ -71,11 +46,14 @@ void mostrarMenu()
     int ancho=49;
 
     int opcion = 10;
+    bool inicial=true;
+
+
 
     do
     {
-        cambiarFondo(1);
-        cambiarLetra(1);
+        cambiarFondo(7);
+        cambiarLetra(4);
         rlutil::saveDefaultColor();
         borrarPantalla();
         dibujarMarco(x,y,largo,ancho);
@@ -115,7 +93,7 @@ void mostrarMenu()
         switch (opcion)
         {
         case 1:
-            jugar();
+            jugar(inicial);
             break;
         case 2:
             cout << "Mostrar estadísticas";
@@ -201,8 +179,8 @@ void mostrarCreditos()
 
 void dibujarDado(int cantCaras, int valorDado, int x, int y) {
 
-    int colorFondo=10; // Color verde claro
-    int colorLetra=3; // Color Cyan
+    int colorFondo=15; // Color blanco //Color verde claro
+    int colorLetra=12; // Color Light Red
     string dado[5]; // 5 filas de caracteres
 
     // Inicializamos con el borde y espacios
@@ -217,6 +195,7 @@ void dibujarDado(int cantCaras, int valorDado, int x, int y) {
     if (cantCaras == 12) {
         dado[0] = "/=======\\";
         dado[4] = "\\=======/";
+        colorFondo=10;
         colorLetra=4; //  Cambiamos el color de la letra a rojo para diferenciar el dado de 6 caras
 
         // Si es un dado de 12 caras, mostramos el número en el centro
@@ -287,11 +266,7 @@ void dibujarDado(int cantCaras, int valorDado, int x, int y) {
 
     rlutil::resetColor();
 
-    //rlutil::setColor(15); //devuelve el color
-    //rlutil::setBackgroundColor(0); // devuelve el color
-
 }
-
 
 
 
