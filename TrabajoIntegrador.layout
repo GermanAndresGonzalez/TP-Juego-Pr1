@@ -2,37 +2,6 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="trabajovectores.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="920" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="11" />
-			<Collapse line="24" />
-			<Collapse line="35" />
-		</Folding>
-	</File>
-	<File name="codigoEnfrendados.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2667" topLine="111" />
-		</Cursor>
-		<Folding>
-			<Collapse line="20" />
-			<Collapse line="152" />
-			<Collapse line="157" />
-			<Collapse line="176" />
-			<Collapse line="184" />
-			<Collapse line="188" />
-			<Collapse line="198" />
-			<Collapse line="342" />
-			<Collapse line="351" />
-		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="510" topLine="1" />
-		</Cursor>
-	</File>
 	<File name="parteGrafica.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1150" topLine="3" />
@@ -51,7 +20,35 @@
 	</File>
 	<File name="codigoEnfrendados.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1603" topLine="14" />
+			<Cursor1 position="1652" topLine="15" />
 		</Cursor>
+	</File>
+	<File name="trabajovectores.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="920" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="11" />
+			<Collapse line="24" />
+			<Collapse line="35" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="470" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="codigoEnfrendados.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8794" topLine="232" />
+		</Cursor>
+		<Folding>
+			<Collapse line="37" />
+			<Collapse line="203" />
+			<Collapse line="213" />
+			<Collapse line="366" />
+			<Collapse line="375" />
+			<Collapse line="409" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

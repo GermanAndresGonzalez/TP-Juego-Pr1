@@ -7,11 +7,12 @@
 
 #include "rlutil.h"
 
-const int DADOS_INICIALES = 6;
-const int RONDAS = 3;
+//const int DADOS_INICIALES = 6;
+//const int RONDAS = 3;
 
 
 void esperar(int tiempo){
+
     rlutil::msleep(tiempo);
     rlutil::anykey();
 
@@ -115,6 +116,7 @@ void jugar(string &jugador1, string &jugador2,  int vec[], int vec2[])
 
     int puntaje1 = 0, puntaje2 = 0;
     int ronda=1;
+    bool ganador=false;
 
 
     inicializarVector(vec,numInicial);
@@ -137,14 +139,39 @@ void jugar(string &jugador1, string &jugador2,  int vec[], int vec2[])
         imprimirRonda(25, 3, jugador1, ronda);
         jugarRonda(jugador1, jugador2, vec,vec2);
 
+        if ((contarDadosVector(vec,12)==0)){
+            mostrarGanador(jugador1,vec);
+            ganador=true;
+        }
+
 
         borrarPantalla();
         imprimirRonda(25, 3, jugador2, ronda);
         jugarRonda(jugador2, jugador1, vec2,vec);
         ronda++;
 
+        if ((contarDadosVector(vec2,12)==0)){
+            mostrarGanador(jugador2,vec2);
+            ganador=true;
+        }
 
-    } while (ronda<4);
+
+    } while ((ronda<4) &&(ganador==false) );
+
+    if (ganador==false) {
+        if ((vec[11]) > (vec2[11])){
+
+            mostrarGanador(jugador1,vec);
+
+        }else {
+            mostrarGanador(jugador2,vec2);
+
+        }
+
+    }
+    esperar(500);
+    rlutil::anykey();
+
 
 
 }
@@ -182,9 +209,7 @@ bool verificarVictoria(int vec[])
     return cantidadDados == 0;
 }
 
-void ronda(string &jugador1, string &jugador2){
-
-}
+//void ronda(string &jugador1, string &jugador2){}
 
 void mostrarDadoFalso (int cantCaras, int x, int y){
 	int rangoTiempo=140;
@@ -241,7 +266,7 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
         y+=6;
         rlutil::locate(x,y);
 
-        cout << "La suma de los dados es: " << sumaDados12;
+        //cout << "La suma de los dados es: " << sumaDados12;
         y++;
         rlutil::locate(x,y);
         cout << "Estos son los dados de " << jugador1 << ":";
@@ -282,8 +307,8 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
                     cout << mensaje;
                     contador+=dadoObj;
                     sumaSeleccionada+=vectorDados[dadoObj-1];
-                    rlutil::locate(x+41, y+6);
-                    cout << "Suma de los dados: " << sumaSeleccionada << "          ";
+                    //rlutil::locate(x+41, y+6);
+                    //cout << "Suma de los dados: " << sumaSeleccionada << "          ";
                     vectorDados[dadoObj-1]=0;
                     contadorDados++;
 
@@ -308,6 +333,9 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
             rlutil::locate(x+41, y+5);
 
             cout << "Le pasa " << contadorDados << " dados a " << jugador2 << "            " << endl;
+            rlutil::locate(x+41, y+6);
+            cout << "Presiona una tecla para seguir.";
+
         } else {
             rlutil::locate(x+41, y+4);
             cout << "Tirada fallida no se suman puntos"<< endl;
@@ -322,6 +350,8 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
                 rlutil::locate(x+41, y+5);
                 cout << "                                                 ";
             }
+            rlutil::locate(x+41, y+6);
+            cout << "Presiona una tecla para seguir.";
 
 
         }
@@ -331,14 +361,8 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
     rlutil::anykey();
 
 }
-/*
-int calcularCentroTexto(int x, string cadena, int ancho){
-    //int medio=(largo-11)/2;
-    int largo = cadena.length();
-    int num =(x+((ancho-largo)/2));
-    return num;
-}
-*/
+
+
 
 void imprimirRonda(int x, int y, string nombre, int ronda){
     rlutil::locate(x,y);
@@ -372,6 +396,8 @@ void mostrarEstadisticas(string nombre1, string nombre2, int vec[], int vec2[]){
     } else {
         rlutil::locate(x,y);
         cout << "Todavía no hay estadísticas disponibles.";
+        rlutil::locate(x,y+1);
+        cout << "Presiona una tecla para volver al menú principal.";
     }
 
 
@@ -385,8 +411,20 @@ int imprimirLineaEstadistica (int x, int y, string nombre, int vec[]){
     rlutil::locate(x,y);
     cout << nombre << " logró " << vec[11] << " puntos. " ;
     y++;
-    rlutil::locate(x,y);
-    cout << "Obtuvo: " << contarDadosVector(vec,11) << " dados" ;
+    //rlutil::locate(x,y);
+    //cout << "Obtuvo: " << contarDadosVector(vec,11) << " dados" ;
     return y;
 
+}
+
+void mostrarGanador (string nombre, int vec[]){
+    borrarPantalla();
+    dibujarMarco(5,5,30,75);
+    rlutil::locate(20,7);
+    cout << "¡Felicitaciones " << nombre << " ganaste!";
+    rlutil::locate(10,10);
+    //cout << nombre << " ganó la partida por tener " << contarDadosVector(vec,12) << " y " << vec[11] << " puntos.";
+    cout << "Lograste un total de " << vec[11] << " puntos.";
+    rlutil::locate(10,11);
+    cout << "Presiona una tecla para seguir.";
 }

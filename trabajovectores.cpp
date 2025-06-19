@@ -34,7 +34,7 @@ void restarVector(int vec[], int cantidad)
 }
 
 void sumarDadosVector(int vec[], int cantidad){
-    for (int i = 0; i <10; i++)
+    for (int i = 0; i <11; i++)
     {
         if ((vec[i] == 0) && (cantidad > 0))
         {
