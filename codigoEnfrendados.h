@@ -10,7 +10,7 @@ void cambiarFondo( int colorFondo); // // Cambia el color del fondo de manera m�
 void cambiarLetra( int colorLetra);// // Cambia el color de la letras fondo de manera más amiigable;
 void encabezado(int x, int y, int largo); // Imprime el encabezado del juego
 void dibujarMarco(int x, int y, int largo,int ancho);   //Dibuja el marco del menú
-void mostrarMenu();  // Muestra el menu
+bool mostrarMenu();  // Muestra el menu
 void imprimirLineas(int largo,char caracter); // Imprimir caracteres de manera repetida
 int calcularCentroTexto(int x, string cadena, int ancho);
 void mostrarCreditos();

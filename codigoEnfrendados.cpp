@@ -22,14 +22,16 @@ bool salir()
 { // Pregunta si realmente desea salir
     char deseaSalir;
     rlutil::locate(54, 17);
-    cout << "¿Realmente desea salir? S/N";
-    rlutil::locate(82, 17);
+    cout << "¿Realmente deseas salir? S/N";
+    rlutil::locate(83, 17);
     cin >> deseaSalir;
     deseaSalir = toupper(deseaSalir);
     if (deseaSalir == 'S')
     {
         return true;
-    }
+    } else {
+        return false;
+     }
 }
 
 
@@ -288,7 +290,7 @@ void jugarRonda(string &jugador1, string &jugador2,  int vec[], int vec2[]){
         rlutil::locate(x,y);
         cout << "Elige el número de dado que deseas usar para lograr tu valor objetivo";
         rlutil::locate(x,y+1);
-        cout << "(Elegí 0 para dejar de ingresar dados):     ";
+        cout << "(Elige 0 para dejar de ingresar dados):     ";
         mensaje= "Dado(s) elegido(s)";
         rlutil::showcursor();
         do {

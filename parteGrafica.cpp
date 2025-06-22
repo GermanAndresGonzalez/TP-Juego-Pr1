@@ -23,6 +23,8 @@ void cambiarLetra( int colorLetra)
 }
 
 void dibujarMarco(int x, int y, int largo,int ancho){
+    //Cambiar color a rojo
+    cambiarLetra(4);
     rlutil::locate(x, y);
     imprimirLineas(ancho, '-');
     for (int i=1;i<largo;i++){
@@ -35,10 +37,12 @@ void dibujarMarco(int x, int y, int largo,int ancho){
     }
     rlutil::locate(x, y+largo);
     imprimirLineas(ancho, '-');
+    //Cambiar color a azul
+    cambiarLetra(1);
 
 }
 
-void mostrarMenu()
+bool mostrarMenu()
 { // Menú del juego con cambio de colores y posición
     int x=40;
     int y=5;
@@ -48,7 +52,7 @@ void mostrarMenu()
 
     int opcion = 10;
 
-    //bool inicial=true;
+    bool respuestaSalir2=false;
 
 
     int numInicial=6;
@@ -61,11 +65,13 @@ void mostrarMenu()
     do
     {
         cambiarFondo(7);
-        cambiarLetra(4);
+        cambiarLetra(1);
         rlutil::saveDefaultColor();
         borrarPantalla();
         dibujarMarco(x,y,largo,ancho);
         encabezado(x,y, ancho);
+
+        cambiarLetra(1);
 
         rlutil::locate(x+19, 10);
         cout << "1 - JUGAR";
@@ -81,7 +87,14 @@ void mostrarMenu()
 
         rlutil::locate(x, 16);
 
+        // Cambiar letra a rojo
+
+        cambiarLetra(4);
         imprimirLineas(x+9, '-');
+
+        // Cambiar letra a azul
+        cambiarLetra(1);
+
 
         rlutil::locate(x+14, 17);
         cout << "Seleccione una opción:";
@@ -109,17 +122,25 @@ void mostrarMenu()
         case 3:
             mostrarCreditos();
             break;
+        case 0:
+            respuestaSalir2 = salir();
+
+            break;
+
         }
-    } while (opcion != 0);
+    } while (respuestaSalir2 == false);
+    return respuestaSalir2;
 }
 
 
 void imprimirLineas(int largo,char caracter){
     // Imprimir caracteres de manera repetida
+    //Cambiar color a azul
+    cambiarLetra(4);
     for (int i=0; i<largo;i++){
         cout << caracter;
     }
-
+    cambiarLetra(1);
 }
 
 void encabezado(int x, int y, int largo){
@@ -129,7 +150,13 @@ void encabezado(int x, int y, int largo){
     imprimirLineas(largo, '-');
 
     rlutil::locate(x+medio, y+1);
+
+    //Cambiar color a azul
+    cambiarLetra(1);
     cout << "Enfrendados" << endl;
+
+    //Cambiar color a color
+    cambiarLetra(4);
     rlutil::locate(x, y+2);
     imprimirLineas(largo, '-');
 
@@ -146,7 +173,7 @@ void mostrarCreditos()
     encabezado(x,y,ancho);
     rlutil::locate(x+20, y+4);
     cambiarLetra(3);
-    cout << "UTN|";
+    cout << "UTN | ";
 
     cambiarLetra(4);
     cout << "FRGP";
@@ -180,7 +207,7 @@ void mostrarCreditos()
 
     cout << "Presiona una tecla para volver al menú.";
     esperar(1000);
-
+    rlutil::anykey();
     //borrarPantalla();
 
 }
